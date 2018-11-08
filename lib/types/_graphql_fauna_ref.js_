@@ -1,0 +1,15 @@
+import { GraphQLScalarType } from 'graphql'
+import { query as q } from 'faunadb'
+
+export default new GraphQLScalarType({
+  name: 'GraphQLRef',
+  serialize(value) {
+    throw new Error('Ref scalar serialize not implemented')
+  },
+  parseValue(value) {
+    return q.Ref(q.Class(value.class), value.id)
+  },
+  parseLiteral(ast) {
+    throw new Error('Ref parseLiteral not implemented')
+  },
+})

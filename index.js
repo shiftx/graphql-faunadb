@@ -1,0 +1,5 @@
+export { default as GraphQLFaunaBatch } from './lib/types/graphql_fauna_batch'
+export { default as GraphQLFaunaCursor } from './lib/types/graphql_fauna_cursor'
+export { default as GraphQLFaunaId } from './lib/types/graphql_fauna_id'
+export { default as GraphQLFaunaPage } from './lib/types/graphql_fauna_page'
+export { default as GraphQLFaunaTimestamp } from './lib/types/graphql_fauna_timestamp'
