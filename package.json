@@ -1,7 +1,7 @@
 {
   "name": "graphql",
   "version": "0.2.0",
-  "description": "A collection of types and functions to help use GraphQL with FaunaDB",
+  "description": "A collection of types and functions to pair GraphQL with FaunaDB",
   "license": "MIT",
   "main": "index",
   "homepage": "https://github.com/shiftx/graphql-faunadb",
@@ -21,14 +21,14 @@
     "node": ">= 6.x"
   },
   "scripts": {
-
+    "test": "jest"
   },
   "dependencies": {
     "iterall": "^1.2.2"
   },
   "peerDependencies": {
-    "graphql-js": ">= 12",
-    "fauandb": ">= 2"
+    "fauandb": ">= 2",
+    "graphql-js": ">= 12"
   },
   "devDependencies": {
     "@babel/cli": "7.1.2",
@@ -43,11 +43,15 @@
     "@babel/polyfill": "7.0.0",
     "@babel/preset-env": "7.1.0",
     "@babel/register": "7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "10.0.1",
+    "babel-jest": "^23.6.0",
     "eslint": "5.6.1",
     "eslint-plugin-flowtype": "2.50.3",
     "eslint-plugin-prettier": "3.0.0",
+    "faunadb": "^2.5.2",
     "flow-bin": "0.83.0",
+    "graphql": "^14.0.2",
     "jest": "23.6.0",
     "prettier": "1.14.3"
   }
