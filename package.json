@@ -27,8 +27,8 @@
     "iterall": "^1.2.2"
   },
   "peerDependencies": {
-    "fauandb": ">= 2",
-    "graphql-js": ">= 12"
+    "fauandb": "^2.0.0",
+    "graphql-js": "^12.0.0"
   },
   "devDependencies": {
     "@babel/cli": "7.1.2",
