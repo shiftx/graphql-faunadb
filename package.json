@@ -1,6 +1,6 @@
 {
-  "name": "graphql",
-  "version": "0.2.0",
+  "name": "graphql-faunadb",
+  "version": "0.1.0-rc.1",
   "description": "A collection of types and functions to pair GraphQL with FaunaDB",
   "license": "MIT",
   "main": "index",
