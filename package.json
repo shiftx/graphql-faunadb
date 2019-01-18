@@ -1,64 +1,44 @@
 {
-  "name": "graphql-faunadb",
-  "version": "0.1.0-rc.9",
-  "description": "A collection of types and functions to pair GraphQL with FaunaDB",
-  "license": "MIT",
-  "main": "index",
-  "homepage": "https://github.com/shiftx/graphql-faunadb",
-  "bugs": {
-    "url": "https://github.com/shiftx/graphql-faunadb/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "http://github.com/shiftx/graphql-faunadb.git"
-  },
-  "keywords": [
-    "graphql",
-    "faunadb",
-    "fauna"
-  ],
-  "engines": {
-    "node": ">= 6.x"
-  },
-  "scripts": {
-    "test": "jest",
-    "build": "npm run build:clean && npm run build:cp && npm run build:package-json && npm run build:cjs && npm run build:mjs",
-    "build:clean": "rm -rf ./dist && mkdir ./dist",
-    "build:cp": "cp README.md LICENSE ./dist",
-    "build:package-json": "node ./scripts/copy-package-json.js",
-    "build:cjs": "babel src --ignore 'src/__fixtures__,**/__tests__' --out-dir dist/",
-    "build:mjs": "BABEL_MODULES=1 babel src --ignore 'src/__fixtures__,**/__tests__' --out-dir dist/module/ && for file in $(find dist/module -name '*.js'); do mv \"$file\" `echo \"$file\" | sed 's/dist\\/module/dist/g; s/.js$/.mjs/g'`; done && rm -rf dist/module"
-  },
-  "dependencies": {
-    "iterall": "^1.2.2"
-  },
-  "peerDependencies": {
-    "fauandb": "^2.0.0",
-    "graphql-js": "^0.12.0 ^0.13.0 ^14.0.0"
-  },
-  "devDependencies": {
-    "@babel/cli": "7.1.2",
-    "@babel/core": "7.1.2",
-    "@babel/plugin-proposal-class-properties": "7.1.0",
-    "@babel/plugin-proposal-object-rest-spread": "7.0.0",
-    "@babel/plugin-syntax-async-generators": "7.0.0",
-    "@babel/plugin-transform-classes": "7.1.0",
-    "@babel/plugin-transform-destructuring": "7.1.3",
-    "@babel/plugin-transform-flow-strip-types": "7.0.0",
-    "@babel/plugin-transform-spread": "7.0.0",
-    "@babel/polyfill": "7.0.0",
-    "@babel/preset-env": "7.1.0",
-    "@babel/register": "7.0.0",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-eslint": "10.0.1",
-    "babel-jest": "^23.6.0",
-    "eslint": "5.6.1",
-    "eslint-plugin-flowtype": "2.50.3",
-    "eslint-plugin-prettier": "3.0.0",
-    "faunadb": "^2.5.2",
-    "flow-bin": "0.83.0",
-    "graphql": "^14.0.2",
-    "jest": "23.6.0",
-    "prettier": "1.14.3"
-  }
+    "name": "graphql-faunadb",
+    "version": "0.1.0-rc.9",
+    "description": "A collection of types and functions to pair GraphQL with FaunaDB",
+    "license": "MIT",
+    "main": "dist/index.js",
+    "homepage": "https://github.com/shiftx/graphql-faunadb",
+    "bugs": {
+        "url": "https://github.com/shiftx/graphql-faunadb/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "http://github.com/shiftx/graphql-faunadb.git"
+    },
+    "keywords": [
+        "graphql",
+        "faunadb",
+        "fauna"
+    ],
+    "engines": {
+        "node": ">= 6.x"
+    },
+    "scripts": {
+        "test": "jest",
+        "build": "tsc",
+        "format": "prettier src/**/*.ts --write"
+    },
+    "dependencies": {},
+    "peerDependencies": {
+        "fauandb": "^2.0.0",
+        "graphql": "^0.12.0 ^0.13.0 ^14.0.0"
+    },
+    "devDependencies": {
+        "@types/graphql": "^14.0.5",
+        "@types/jest": "^23.3.12",
+        "@types/node": "^10.12.18",
+        "faunadb": "^2.5.2",
+        "graphql": "^14.1.1",
+        "jest": "23.6.0",
+        "prettier": "1.14.3",
+        "ts-jest": "^23.10.5",
+        "typescript": "^3.2.4"
+    }
 }
