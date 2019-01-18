@@ -7,11 +7,12 @@ function parseFaunaId(val, className) {
   throw new Error('unable to parse id')
 }
 
-class GraphQLFaunaId extends GraphQLScalarType {
+class GraphQLFaunaIdType extends GraphQLScalarType {
   constructor({ name, className }) {
     super({
       name,
       serialize(val) {
+        console.log(val)
         if (typeof val === 'object') {
           if (val.class.id !== className) {
             throw new Error(`Ref mismatch. Expecting '${className}' given '${val.class.id}'`)
@@ -32,4 +33,4 @@ class GraphQLFaunaId extends GraphQLScalarType {
   }
 }
 
-export default GraphQLFaunaId
+export default GraphQLFaunaIdType

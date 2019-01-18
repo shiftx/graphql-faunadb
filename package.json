@@ -1,6 +1,6 @@
 {
   "name": "graphql-faunadb",
-  "version": "0.1.0-rc.2",
+  "version": "0.1.0-rc.9",
   "description": "A collection of types and functions to pair GraphQL with FaunaDB",
   "license": "MIT",
   "main": "index",
@@ -21,14 +21,20 @@
     "node": ">= 6.x"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "npm run build:clean && npm run build:cp && npm run build:package-json && npm run build:cjs && npm run build:mjs",
+    "build:clean": "rm -rf ./dist && mkdir ./dist",
+    "build:cp": "cp README.md LICENSE ./dist",
+    "build:package-json": "node ./scripts/copy-package-json.js",
+    "build:cjs": "babel src --ignore 'src/__fixtures__,**/__tests__' --out-dir dist/",
+    "build:mjs": "BABEL_MODULES=1 babel src --ignore 'src/__fixtures__,**/__tests__' --out-dir dist/module/ && for file in $(find dist/module -name '*.js'); do mv \"$file\" `echo \"$file\" | sed 's/dist\\/module/dist/g; s/.js$/.mjs/g'`; done && rm -rf dist/module"
   },
   "dependencies": {
     "iterall": "^1.2.2"
   },
   "peerDependencies": {
     "fauandb": "^2.0.0",
-    "graphql-js": "^12.0.0"
+    "graphql-js": "^0.12.0 ^0.13.0 ^14.0.0"
   },
   "devDependencies": {
     "@babel/cli": "7.1.2",

@@ -3,7 +3,7 @@ import {
   GraphQLList,
 } from 'graphql'
 
-import { GraphQLFaunaCursor } from './graphql_fauna_cursor'
+import { GraphQLFaunaCursorType } from './graphql_fauna_cursor_type'
 
 class GraphQLFaunaPage extends GraphQLObjectType {
   constructor({ name, type }) {
@@ -11,11 +11,11 @@ class GraphQLFaunaPage extends GraphQLObjectType {
       name,
       fields: () => ({
         next: {
-          type: GraphQLFaunaCursor,
+          type: GraphQLFaunaCursorType,
           resolve: source => source.after,
         },
         previous: {
-          type: GraphQLFaunaCursor,
+          type: GraphQLFaunaCursorType,
           resolve: source => source.before,
         },
         page: {

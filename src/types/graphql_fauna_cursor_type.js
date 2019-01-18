@@ -1,8 +1,8 @@
 import { GraphQLScalarType } from 'graphql'
 import { parseJSON } from 'faunadb/src/_json'
 
-const GraphQLFaunaCursor = new GraphQLScalarType({
-  name: 'GraphQLFaunaCursor',
+const GraphQLFaunaCursorType = new GraphQLScalarType({
+  name: 'GraphQLFaunaCursorType',
   serialize(value) {
     return Buffer.from(JSON.stringify(value)).toString('base64')
   },
@@ -15,4 +15,4 @@ const GraphQLFaunaCursor = new GraphQLScalarType({
   },
 })
 
-export default GraphQLFaunaCursor
+export default GraphQLFaunaCursorType

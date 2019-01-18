@@ -1,7 +1,22 @@
 import { GraphQLScalarType } from 'graphql'
 
+function digitsFromInt(int) {
+  return Math.floor(Math.log10(int) + 1)
+}
+
+function intToNanoUnix(int) {
+  const digits = digitsFromInt(int)
+  switch (digits) {
+    case 16: return int
+    case 13: return int * 1000
+    case 10: return int * 1000000
+    default:
+      throw new Error('Unsupported unix timestamp digit length')
+  }
+}
+
 function toISO8601StringWithNanoseconds(int) {
-  const digits = Math.floor(Math.log10(int) + 1)
+  const digits = digitsFromInt(int)
   let date
   let remainder = ''
   let millis = true
@@ -36,12 +51,13 @@ function fromISO8601StringWithNanoseconds(string) {
   return unix
 }
 
-const GraphQLTimestamp = new GraphQLScalarType({
-  name: 'GraphQLTimestamp',
+const GraphQLFaunaTimestampType = new GraphQLScalarType({
+  name: 'GraphQLFaunaTimestampType',
   serialize(val) {
     return toISO8601StringWithNanoseconds(val)
   },
   parseValue(val) {
+    if (Number.isInteger(val)) return intToNanoUnix(val)
     return fromISO8601StringWithNanoseconds(val)
   },
   parseLiteral(ast) {
@@ -50,4 +66,4 @@ const GraphQLTimestamp = new GraphQLScalarType({
   },
 })
 
-export default GraphQLTimestamp
+export default GraphQLFaunaTimestampType
